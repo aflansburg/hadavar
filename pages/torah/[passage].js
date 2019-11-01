@@ -2,8 +2,8 @@ import fetch from "isomorphic-unfetch";
 import PassageReader from "../../src/Reader/PassageReader";
 import { AllBooks } from "../../src/books.json";
 
-function Passage({ passage, title }) {
-  return <PassageReader passage={passage} title={title} />;
+function Passage({ passage, title, navData }) {
+  return <PassageReader passage={passage} title={title} navData={navData} />;
 }
 
 Passage.getInitialProps = async context => {
@@ -13,8 +13,16 @@ Passage.getInitialProps = async context => {
     `https://hadavar-79b0d.firebaseio.com/${book}/chapters/${chapter}.json`
   );
   const passage = await res.json();
+
   const title = AllBooks[book].name;
-  return { passage, title };
+
+  const navData = {
+    currBookIndex: Number(book),
+    currChapterIndex: Number(chapter),
+    length: AllBooks[book].length
+  };
+
+  return { passage, title, navData };
 };
 
 export default Passage;

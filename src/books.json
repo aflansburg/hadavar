@@ -7,10 +7,10 @@
     { "name": "D'varim (Deuteronomy)", "slug": "dvarim" }
   ],
   "AllBooks": [
-    { "name": "B'reshit (Genesis)", "slug": "breshit" },
-    { "name": "Shemot (Exodus)", "slug": "shemot" },
-    { "name": "Vayikra (Leviticus)", "slug": "vayikra" },
-    { "name": "BaMidbar (Numbers)", "slug": "bamidbar" },
-    { "name": "D'varim (Deuteronomy)", "slug": "dvarim" }
+    { "name": "B'reshit (Genesis)", "slug": "breshit", "length": 50 },
+    { "name": "Shemot (Exodus)", "slug": "shemot", "length": 40 },
+    { "name": "Vayikra (Leviticus)", "slug": "vayikra", "length": 27 },
+    { "name": "BaMidbar (Numbers)", "slug": "bamidbar", "length": 36 },
+    { "name": "D'varim (Deuteronomy)", "slug": "dvarim", "length": 34 }
   ]
 }
