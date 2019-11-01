@@ -8,15 +8,17 @@ Install GitHub for Windows
 https://desktop.github.com/
 
 Get link to clone repository top right on this page (Clone or Download Button)
+Easy to setup in Github desktop
 
-Install Next.js and React
-https://nextjs.org/docs#quick-start
+[Install Next.js and React](https://nextjs.org/docs#quick-start)
+
+
 `npm install --save next react react-dom`
 
-Start dev server:
+##### Start dev server:
 `npm run dev`
 
-Can access on:
+##### Navigate to:
 `http://localhost:3001/dashboard`
 
 
