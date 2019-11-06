@@ -47,17 +47,21 @@ export function Glossary() {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
-      <Typography variant="h5">Tools</Typography>
+      <Typography variant="h5">Tools {" <coming soon> "}</Typography>
       <Divider style={{ marginBottom: 8 }} />
       <Grid item container spacing={2}>
         <Grid item xs={12}>
           <Button>
-            <Typography variant="subtitle1">Glossary of Terms</Typography>
+            <Typography variant="subtitle1">
+              Glossary of Terms {" <coming soon> "}
+            </Typography>
           </Button>
         </Grid>
         <Grid item xs={12}>
           <Button>
-            <Typography variant="subtitle1">Parashot</Typography>
+            <Typography variant="subtitle1">
+              Parashot {" <coming soon> "}
+            </Typography>
           </Button>
         </Grid>
       </Grid>
