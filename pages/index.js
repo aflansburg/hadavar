@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   }
 });
 
-function Dashboard() {
+export default function Index() {
   const classes = useStyles();
 
   return (
@@ -48,5 +48,3 @@ function Dashboard() {
     </React.Fragment>
   );
 }
-
-export default Dashboard;
