@@ -12,6 +12,7 @@ import {
   AppBar
 } from "@material-ui/core";
 import makeStyles from "@material-ui/styles/makeStyles";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import TorahScroll from "../../src/svg/scroll";
 import Navigator from "./Navigator";
 
@@ -25,6 +26,21 @@ const useStyles = makeStyles({
 // passage will always only be one chapter
 function PassageReader({ title, passage, navData }) {
   const classes = useStyles();
+
+  const NavLink = ({ op }) => (
+    <Link href={Navigator(navData, op)}>
+      <IconButton style={{ color: "#fff" }}>
+        <SvgIcon>
+          {op === "next" ? (
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          ) : (
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          )}
+        </SvgIcon>
+      </IconButton>
+    </Link>
+  );
+
   return (
     <React.Fragment>
       <AppBar
@@ -32,7 +48,7 @@ function PassageReader({ title, passage, navData }) {
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
         <Toolbar>
-          <Link href="/dashboard">
+          <Link href="/">
             <IconButton>
               <TorahScroll />
             </IconButton>
@@ -42,20 +58,8 @@ function PassageReader({ title, passage, navData }) {
           </Typography>
           {/* if current chapter index plus 1 less than book length (num of
           chapters) then current book else go to next book via currBookIndex++ */}
-          <Button style={{ paddingLeft: "5vw", color: "#fff" }}>
-            <Link href={Navigator(navData, "prev")}>
-              <Typography variant="subtitle1" style={{ float: "right" }}>
-                {"< Prev"}
-              </Typography>
-            </Link>
-          </Button>
-          <Button style={{ paddingLeft: "5vw", color: "#fff" }}>
-            <Link href={Navigator(navData, "next")}>
-              <Typography variant="subtitle1" style={{ float: "right" }}>
-                {"Next > "}
-              </Typography>
-            </Link>
-          </Button>
+          <NavLink op="prev" />
+          <NavLink op="next" />
         </Toolbar>
       </AppBar>
       <Container>
