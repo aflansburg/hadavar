@@ -48,18 +48,31 @@ function PassageReader({ title, passage, navData }) {
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
         <Toolbar>
-          <Link href="/">
-            <IconButton>
-              <TorahScroll />
-            </IconButton>
-          </Link>
-          <Typography variant="h6" className={classes.title}>
-            {`${title} Chapter ${passage.chapter_num}`}
-          </Typography>
-          {/* if current chapter index plus 1 less than book length (num of
+          <Grid
+            container
+            spacing={2}
+            justify="space-between"
+            alignItems="center"
+          >
+            <Grid item>
+              <Link href="/">
+                <IconButton>
+                  <TorahScroll />
+                </IconButton>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1" className={classes.title}>
+                {`${title} Chapter ${passage.chapter_num}`}
+              </Typography>
+            </Grid>
+            {/* if current chapter index plus 1 less than book length (num of
           chapters) then current book else go to next book via currBookIndex++ */}
-          <NavLink op="prev" />
-          <NavLink op="next" />
+            <Grid item>
+              <NavLink op="prev" />
+              <NavLink op="next" />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
       <Container>

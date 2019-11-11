@@ -13,14 +13,14 @@
     { "name": "Shmu'el Bet (2 Samuel)", "slug": "shmuel_bet", "length": 25 }
   ],
   "AllBooks": [
-    { "name": "B'reshit (Genesis)", "slug": "breshit", "length": 50 },
-    { "name": "Shemot (Exodus)", "slug": "shemot", "length": 40 },
-    { "name": "Vayikra (Leviticus)", "slug": "vayikra", "length": 27 },
-    { "name": "BaMidbar (Numbers)", "slug": "bamidbar", "length": 36 },
-    { "name": "D'varim (Deuteronomy)", "slug": "dvarim", "length": 34 },
-    { "name": "Yehoshua (Joshua)", "slug": "yehoshua", "length": 24 },
-    { "name": "Shofitm (Judges)", "slug": "shofitm", "length": 21 },
-    { "name": "Shmu'el Alef (1 Samuel)", "slug": "shmuel_alef", "length": 31 },
-    { "name": "Shmu'el Bet (2 Samuel)", "slug": "shmuel_bet", "length": 25 }
+    { "name": "B'reshit", "slug": "breshit", "length": 50 },
+    { "name": "Shemot", "slug": "shemot", "length": 40 },
+    { "name": "Vayikra", "slug": "vayikra", "length": 27 },
+    { "name": "BaMidbar", "slug": "bamidbar", "length": 36 },
+    { "name": "D'varim", "slug": "dvarim", "length": 34 },
+    { "name": "Yehoshua", "slug": "yehoshua", "length": 24 },
+    { "name": "Shofitm", "slug": "shofitm", "length": 21 },
+    { "name": "Shmu'el Alef", "slug": "shmuel_alef", "length": 31 },
+    { "name": "Shmu'el Bet", "slug": "shmuel_bet", "length": 24 }
   ]
 }
