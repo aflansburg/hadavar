@@ -20,11 +20,9 @@ export function Torah() {
     { name: "D'varim (Deuteronomy)", slug: "dvarim" }
   ];
 
-  const handleBookClick = slug => {};
-
   return (
     <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
-      <Typography variant="h5">Torah</Typography>
+      <Typography variant="h5">HaTorah</Typography>
       <Divider style={{ marginBottom: 8 }} />
       <Grid item container spacing={2}>
         {TorahBooks.map((book, index) => {
@@ -32,6 +30,39 @@ export function Torah() {
             <Grid item xs={12} key={`Torah-Book-${book.name}-${index}`}>
               <Button>
                 <Link href={`/torah/passage?book=${index}`}>
+                  <Typography variant="subtitle1">{book.name}</Typography>
+                </Link>
+              </Button>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </Grid>
+  );
+}
+
+export function Neviim() {
+  const classes = useStyles();
+
+  const Neviim = [
+    { name: "Yehoshua (Joshua)", slug: "yehoshua" },
+    { name: "Shofitm (Judges)", slug: "shofitm" },
+    { name: "Shmu'el Alef (1 Samuel)", slug: "shmuel_alef" },
+    { name: "Shmu'el Bet (2 Samuel)", slug: "shmuel_bet" }
+  ];
+
+  return (
+    <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
+      <Typography variant="h5">HaNevi'im</Typography>
+      <Divider style={{ marginBottom: 8 }} />
+      <Grid item container spacing={2}>
+        {Neviim.map((book, index) => {
+          // adding 5 to index to get to Prophets, probably not ideal - need to rethink
+          const bookIndex = index + 5;
+          return (
+            <Grid item xs={12} key={`Neviim-Book-${book.name}-${bookIndex}`}>
+              <Button>
+                <Link href={`/torah/passage?book=${bookIndex}`}>
                   <Typography variant="subtitle1">{book.name}</Typography>
                 </Link>
               </Button>
