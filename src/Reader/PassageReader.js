@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Container,
@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 // passage will always only be one chapter
 function PassageReader({ title, passage, navData }) {
   const classes = useStyles();
+  const [verseHighlighted, setVerseHighlighted] = useState();
 
   const NavLink = ({ op }) => (
     <Link href={Navigator(navData, op)}>
@@ -42,16 +43,40 @@ function PassageReader({ title, passage, navData }) {
   );
 
   // this bolds and increases font size on the name of Elohim
-  const BoldedVerse = ({ verse }) => {
-    let splitVerse = verse.split(/(\u{05d4}\u{05d5}\u{05d4}\u{05d9}+)/u);
+  const BoldedVerse = ({ verse, verseNum }) => {
+    let splitVerse = verse.split(/(\u{05d4}\u{05d5}\u{05d4}\u{05d9})/u);
     for (var i = 1; i < splitVerse.length; i += 2) {
       splitVerse[i] = (
-        <span style={{ fontWeight: "bold", fontSize: 20 }} key={i}>
-          {splitVerse[i].split("").reverse()}
+        <span
+          style={{
+            fontWeight: "bold",
+            fontSize: 20
+          }}
+          key={i}
+        >
+          {[...splitVerse[i]].reverse().join("")}
         </span>
       );
     }
-    return <React.Fragment>{splitVerse}</React.Fragment>;
+    return (
+      <Typography variant="body1">
+        <span style={{ fontWeight: "bold", marginRight: 3 }}>
+          <sup>{verseNum}</sup>
+        </span>
+        <span
+          onClick={() => {
+            if (verseNum !== verseHighlighted) setVerseHighlighted(verseNum);
+            else setVerseHighlighted(null);
+          }}
+          style={{
+            backgroundColor:
+              verseNum === verseHighlighted ? "rgba(154,255,154,0.58)" : "none"
+          }}
+        >
+          {splitVerse}
+        </span>
+      </Typography>
+    );
   };
 
   return (
@@ -85,16 +110,11 @@ function PassageReader({ title, passage, navData }) {
       </AppBar>
       <Container>
         <Paper style={{ margin: "12px 0 12px", padding: 12 }}>
-          <Typography variant="body1">
-            {passage.verses.map((verse, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <sup>{index + 1} </sup>
-                  <BoldedVerse verse={verse} />
-                </React.Fragment>
-              );
-            })}
-          </Typography>
+          {passage.verses.map((verse, index) => {
+            return (
+              <BoldedVerse key={index} verse={verse} verseNum={index + 1} />
+            );
+          })}
         </Paper>
       </Container>
     </React.Fragment>
