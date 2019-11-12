@@ -41,6 +41,19 @@ function PassageReader({ title, passage, navData }) {
     </Link>
   );
 
+  // this bolds and increases font size on the name of Elohim
+  const BoldedVerse = ({ verse }) => {
+    let splitVerse = verse.split(/(\u{05d4}\u{05d5}\u{05d4}\u{05d9}+)/u);
+    for (var i = 1; i < splitVerse.length; i += 2) {
+      splitVerse[i] = (
+        <span style={{ fontWeight: "bold", fontSize: 20 }} key={i}>
+          {splitVerse[i].split("").reverse()}
+        </span>
+      );
+    }
+    return <React.Fragment>{splitVerse}</React.Fragment>;
+  };
+
   return (
     <React.Fragment>
       <AppBar
@@ -77,7 +90,7 @@ function PassageReader({ title, passage, navData }) {
               return (
                 <React.Fragment key={index}>
                   <sup>{index + 1} </sup>
-                  {verse}{" "}
+                  <BoldedVerse verse={verse} />
                 </React.Fragment>
               );
             })}

@@ -15,6 +15,11 @@
       "name": "Melakhim Alef (1st Kings)",
       "slug": "melakhim_alef",
       "length": 22
+    },
+    {
+      "name": "Melakhim Bet",
+      "slug": "melakhim_bet",
+      "length": 25
     }
   ],
   "AllBooks": [
@@ -31,6 +36,11 @@
       "name": "Melakhim Alef",
       "slug": "melakhim_alef",
       "length": 22
+    },
+    {
+      "name": "Melakhim Bet",
+      "slug": "melakhim_bet",
+      "length": 25
     }
   ]
 }

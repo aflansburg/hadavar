@@ -49,7 +49,8 @@ export function Neviim() {
     { name: "Shofitm (Judges)", slug: "shofitm" },
     { name: "Shmu'el Alef (1 Samuel)", slug: "shmuel_alef" },
     { name: "Shmu'el Bet (2 Samuel)", slug: "shmuel_bet" },
-    { name: "Melakhim Alef (1st Kings)", slug: "melakhim_alef" }
+    { name: "Melakhim Alef (1st Kings)", slug: "melakhim_alef" },
+    { name: "Melakhim Bet (2nd Kings)", slug: "melakhim_bet" }
   ];
 
   return (
