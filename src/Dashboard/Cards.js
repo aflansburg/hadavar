@@ -28,11 +28,11 @@ export function Torah() {
         {TorahBooks.map((book, index) => {
           return (
             <Grid item xs={12} key={`Torah-Book-${book.name}-${index}`}>
-              <Button>
-                <Link href={`/torah/passage?book=${index}`}>
+              <Link href={`/torah/passage?book=${index}`}>
+                <Button>
                   <Typography variant="subtitle1">{book.name}</Typography>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Grid>
           );
         })}
@@ -63,11 +63,11 @@ export function Neviim() {
           const bookIndex = index + 5;
           return (
             <Grid item xs={12} key={`Neviim-Book-${book.name}-${bookIndex}`}>
-              <Button>
-                <Link href={`/torah/passage?book=${bookIndex}`}>
+              <Link href={`/torah/passage?book=${bookIndex}`}>
+                <Button>
                   <Typography variant="subtitle1">{book.name}</Typography>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Grid>
           );
         })}
