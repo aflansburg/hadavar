@@ -48,12 +48,7 @@ function PassageReader({ title, passage, navData }) {
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
         <Toolbar>
-          <Grid
-            container
-            spacing={2}
-            justify="space-between"
-            alignItems="center"
-          >
+          <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <Link href="/">
                 <IconButton>

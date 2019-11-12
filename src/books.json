@@ -10,7 +10,12 @@
     { "name": "Yehoshua (Joshua)", "slug": "yehoshua", "length": 24 },
     { "name": "Shofitm (Judges)", "slug": "shofitm", "length": 21 },
     { "name": "Shmu'el Alef (1 Samuel)", "slug": "shmuel_alef", "length": 31 },
-    { "name": "Shmu'el Bet (2 Samuel)", "slug": "shmuel_bet", "length": 25 }
+    { "name": "Shmu'el Bet (2 Samuel)", "slug": "shmuel_bet", "length": 25 },
+    {
+      "name": "Melakhim Alef (1st Kings)",
+      "slug": "melakhim_alef",
+      "length": 22
+    }
   ],
   "AllBooks": [
     { "name": "B'reshit", "slug": "breshit", "length": 50 },
@@ -21,6 +26,11 @@
     { "name": "Yehoshua", "slug": "yehoshua", "length": 24 },
     { "name": "Shofitm", "slug": "shofitm", "length": 21 },
     { "name": "Shmu'el Alef", "slug": "shmuel_alef", "length": 31 },
-    { "name": "Shmu'el Bet", "slug": "shmuel_bet", "length": 24 }
+    { "name": "Shmu'el Bet", "slug": "shmuel_bet", "length": 24 },
+    {
+      "name": "Melakhim Alef",
+      "slug": "melakhim_alef",
+      "length": 22
+    }
   ]
 }
