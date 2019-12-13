@@ -9,6 +9,8 @@ function Passage({ passage, title, navData }) {
 Passage.getInitialProps = async context => {
   const { book } = context.query;
   const chapter = context.query.chapterIndex || 0;
+  const verse = context.query.verseIndex;
+
   const res = await fetch(
     `https://hadavar-79b0d.firebaseio.com/${book}/chapters/${chapter}.json`
   );
@@ -19,6 +21,7 @@ Passage.getInitialProps = async context => {
   const navData = {
     currBookIndex: Number(book),
     currChapterIndex: Number(chapter),
+    currVerseIndex: Number(verse),
     length: AllBooks[book].length
   };
 

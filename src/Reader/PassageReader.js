@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Container,
@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import makeStyles from "@material-ui/styles/makeStyles";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import TorahScroll from "../../src/svg/scroll";
+import TorahScroll from "../svg/scroll";
 import Navigator from "./Navigator";
 
 const useStyles = makeStyles({
@@ -27,6 +27,25 @@ const useStyles = makeStyles({
 function PassageReader({ title, passage, navData }) {
   const classes = useStyles();
   const [verseHighlighted, setVerseHighlighted] = useState();
+  console.log(navData);
+  useEffect(() => {
+    const verseNumber =
+      navData.currVerseIndex !== null ? navData.currVerseIndex + 1 : false;
+    const verseLength = passage.verses.length;
+    if (verseNumber && verseNumber <= verseLength) {
+      const selVerseElem = document.getElementById(`verse-${verseNumber}`);
+      const scrollOptions = {
+        inline: "center",
+        block: "center",
+        behavior: "smooth"
+      };
+      selVerseElem.scrollIntoView(scrollOptions);
+
+      setTimeout(() => {
+        setVerseHighlighted(verseNumber);
+      }, 250);
+    }
+  }, []);
 
   const NavLink = ({ op }) => (
     <Link href={Navigator(navData, op)}>
@@ -43,8 +62,10 @@ function PassageReader({ title, passage, navData }) {
   );
 
   // this bolds and increases font size on the name of Elohim
-  const BoldedVerse = ({ verse, verseNum }) => {
-    let splitVerse = verse.split(/(\u{05d4}\u{05d5}\u{05d4}\u{05d9})/u);
+  const BoldedVerse = ({ verse, verseNum, id }) => {
+    let splitVerse = verse;
+    splitVerse = splitVerse.split(/(\u{05d4}\u{05d5}\u{05d4}\u{05d9})/u);
+
     for (var i = 1; i < splitVerse.length; i += 2) {
       splitVerse[i] = (
         <span
@@ -59,7 +80,7 @@ function PassageReader({ title, passage, navData }) {
       );
     }
     return (
-      <Typography variant="body1">
+      <Typography variant="body1" id={id}>
         <span style={{ fontWeight: "bold", marginRight: 3 }}>
           <sup>{verseNum}</sup>
         </span>
@@ -112,7 +133,12 @@ function PassageReader({ title, passage, navData }) {
         <Paper style={{ margin: "12px 0 12px", padding: 12 }}>
           {passage.verses.map((verse, index) => {
             return (
-              <BoldedVerse key={index} verse={verse} verseNum={index + 1} />
+              <BoldedVerse
+                id={`verse-${index + 1}`}
+                key={index}
+                verse={verse}
+                verseNum={index + 1}
+              />
             );
           })}
         </Paper>
