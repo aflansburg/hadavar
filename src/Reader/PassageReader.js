@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Router, { RouterContext } from "next/router";
 import {
   Container,
   IconButton,
-  Button,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
   Grid,
   Paper,
   Toolbar,
   Typography,
   Divider,
-  AppBar
+  AppBar,
+  Menu
 } from "@material-ui/core";
 import makeStyles from "@material-ui/styles/makeStyles";
 import SvgIcon from "@material-ui/core/SvgIcon";
@@ -27,7 +32,18 @@ const useStyles = makeStyles({
 function PassageReader({ title, passage, navData }) {
   const classes = useStyles();
   const [verseHighlighted, setVerseHighlighted] = useState();
-  console.log(navData);
+  const [selectedVerse, setSelectedVerse] = useState(
+    navData.currVerseIndex + 1 || 0
+  );
+  const [selectedChapter, setSelectedChapter] = useState(
+    navData.currChapterIndex + 1
+  );
+  const inputLabel = React.useRef(null);
+
+  const { length } = navData;
+  let chapterArrIterable = Array.apply(null, Array(length));
+  chapterArrIterable = chapterArrIterable.map((_, i) => i);
+
   useEffect(() => {
     const verseNumber =
       navData.currVerseIndex !== null ? navData.currVerseIndex + 1 : false;
@@ -46,6 +62,20 @@ function PassageReader({ title, passage, navData }) {
       }, 250);
     }
   }, []);
+
+  const handleVerseChange = e => {
+    setSelectedVerse(e.target.value);
+    const url = `/torah/passage?book=${
+      navData.currBookIndex
+    }&chapterIndex=${selectedChapter - 1}&verseIndex=${e.target.value - 1}`;
+    Router.push(url, url, { shallow: true });
+  };
+  const handleChapterChange = e => {
+    setSelectedChapter(e.target.value);
+    const url = `/torah/passage?book=${navData.currBookIndex}&chapterIndex=${e
+      .target.value - 1}&verseIndex=${selectedVerse - 1}`;
+    Router.push(url, url, { shallow: true });
+  };
 
   const NavLink = ({ op }) => (
     <Link href={Navigator(navData, op)}>
@@ -115,10 +145,66 @@ function PassageReader({ title, passage, navData }) {
                 </IconButton>
               </Link>
             </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" className={classes.title}>
-                {`${title} Chapter ${passage.chapter_num}`}
-              </Typography>
+            <Grid
+              item
+              container
+              xs={6}
+              spacing={1}
+              justify={"center"}
+              alignItems={"center"}
+            >
+              <Grid item>
+                <Typography variant="h5" className={classes.title}>
+                  {title}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <FormControl variant="filled" style={{ width: 80 }}>
+                  <InputLabel
+                    ref={inputLabel}
+                    id="demo-simple-select-outlined-label"
+                    style={{ color: "#fff" }}
+                  >
+                    Chapter
+                  </InputLabel>
+                  <Select
+                    value={selectedChapter}
+                    onChange={handleChapterChange}
+                    style={{ color: "#fff" }}
+                  >
+                    {chapterArrIterable.map(v => {
+                      return <MenuItem value={v + 1}>{v + 1}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item>
+                <Typography variant="h5">:</Typography>
+              </Grid>
+              <Grid item>
+                <FormControl variant="filled" style={{ width: 80 }}>
+                  <InputLabel
+                    ref={inputLabel}
+                    id="demo-simple-select-outlined-label"
+                    style={{ color: "#fff" }}
+                  >
+                    Verse
+                  </InputLabel>
+                  <Select
+                    value={selectedVerse}
+                    onChange={handleVerseChange}
+                    style={{ color: "#fff" }}
+                  >
+                    {passage.verses.map((v, i) => {
+                      return (
+                        <MenuItem key={i} value={i + 1}>
+                          {i + 1}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
             </Grid>
             {/* if current chapter index plus 1 less than book length (num of
           chapters) then current book else go to next book via currBookIndex++ */}
