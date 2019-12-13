@@ -12,10 +12,11 @@ import {
   Paper,
   Toolbar,
   Typography,
-  Divider,
   AppBar,
-  Menu
+  BottomNavigation,
+  BottomNavigationAction
 } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import makeStyles from "@material-ui/styles/makeStyles";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import TorahScroll from "../svg/scroll";
@@ -31,6 +32,8 @@ const useStyles = makeStyles({
 // passage will always only be one chapter
 function PassageReader({ title, passage, navData }) {
   const classes = useStyles();
+  const smUpMatches = useMediaQuery("(min-width:600px)");
+
   const [verseHighlighted, setVerseHighlighted] = useState();
   const [selectedVerse, setSelectedVerse] = useState(
     navData.currVerseIndex + 1 || 0
@@ -137,8 +140,8 @@ function PassageReader({ title, passage, navData }) {
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
         <Toolbar>
-          <Grid container justify="space-between" alignItems="center">
-            <Grid item>
+          <Grid container justify="flex-start" alignItems="center">
+            <Grid item xs={1}>
               <Link href="/">
                 <IconButton>
                   <TorahScroll />
@@ -148,13 +151,13 @@ function PassageReader({ title, passage, navData }) {
             <Grid
               item
               container
-              xs={6}
+              xs={11}
               spacing={1}
               justify={"center"}
-              alignItems={"center"}
+              alignItems="center"
             >
               <Grid item>
-                <Typography variant="h5" className={classes.title}>
+                <Typography variant="subtitle1" className={classes.title}>
                   {title}
                 </Typography>
               </Grid>
@@ -206,12 +209,6 @@ function PassageReader({ title, passage, navData }) {
                 </FormControl>
               </Grid>
             </Grid>
-            {/* if current chapter index plus 1 less than book length (num of
-          chapters) then current book else go to next book via currBookIndex++ */}
-            <Grid item>
-              <NavLink op="prev" />
-              <NavLink op="next" />
-            </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
@@ -229,6 +226,22 @@ function PassageReader({ title, passage, navData }) {
           })}
         </Paper>
       </Container>
+      <AppBar
+        position="fixed"
+        color="primary"
+        style={{ top: "auto", bottom: 0, backgroundColor: "rgb(34, 104, 148)" }}
+      >
+        {/* if current chapter index plus 1 less than book length (num of
+          chapters) then current book else go to next book via currBookIndex++ */}
+        <Grid container justify="space-between">
+          <Grid item>
+            <NavLink op="prev" />
+          </Grid>
+          <Grid item>
+            <NavLink op="next" />
+          </Grid>
+        </Grid>
+      </AppBar>
     </React.Fragment>
   );
 }
