@@ -136,7 +136,7 @@ function PassageReader({ title, passage, navData }) {
   return (
     <React.Fragment>
       <AppBar
-        position="static"
+        position="sticky"
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
         <Toolbar>
@@ -227,7 +227,7 @@ function PassageReader({ title, passage, navData }) {
         </Paper>
       </Container>
       <AppBar
-        position="fixed"
+        position="sticky"
         color="primary"
         style={{ top: "auto", bottom: 0, backgroundColor: "rgb(34, 104, 148)" }}
       >
