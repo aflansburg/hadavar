@@ -41,11 +41,24 @@ function PassageReader({ title, passage, navData }) {
   const [selectedChapter, setSelectedChapter] = useState(
     navData.currChapterIndex + 1
   );
+  const [showNavBtns, setShowNavBtns] = useState(true);
   const inputLabel = React.useRef(null);
 
   const { length } = navData;
   let chapterArrIterable = Array.apply(null, Array(length));
   chapterArrIterable = chapterArrIterable.map((_, i) => i);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setShowNavBtns(true);
+      setTimeout(() => {
+        setShowNavBtns(false);
+      }, 1500);
+    });
+    setTimeout(() => {
+      setShowNavBtns(false);
+    }, 1500);
+  }, []);
 
   useEffect(() => {
     const verseNumber =
@@ -139,8 +152,8 @@ function PassageReader({ title, passage, navData }) {
         position="sticky"
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
       >
-        <Toolbar>
-          <Grid container justify="flex-start" alignItems="center">
+        <Toolbar disableGutters>
+          <Grid container justify="space-between" alignItems="center">
             <Grid item xs={1}>
               <Link href="/">
                 <IconButton>
@@ -153,7 +166,7 @@ function PassageReader({ title, passage, navData }) {
               container
               xs={11}
               spacing={1}
-              justify={"center"}
+              justify="center"
               alignItems="center"
             >
               <Grid item>
@@ -162,7 +175,7 @@ function PassageReader({ title, passage, navData }) {
                 </Typography>
               </Grid>
               <Grid item>
-                <FormControl variant="filled" style={{ width: 80 }}>
+                <FormControl variant="filled" style={{ width: 72 }}>
                   <InputLabel
                     ref={inputLabel}
                     id="demo-simple-select-outlined-label"
@@ -189,7 +202,7 @@ function PassageReader({ title, passage, navData }) {
                 <Typography variant="h5">:</Typography>
               </Grid>
               <Grid item>
-                <FormControl variant="filled" style={{ width: 80 }}>
+                <FormControl variant="filled" style={{ width: 72 }}>
                   <InputLabel
                     ref={inputLabel}
                     id="demo-simple-select-outlined-label"
@@ -216,6 +229,20 @@ function PassageReader({ title, passage, navData }) {
           </Grid>
         </Toolbar>
       </AppBar>
+      {showNavBtns && (
+        <Grid
+          container
+          justify="space-between"
+          style={{ position: "fixed", bottom: "50%" }}
+        >
+          <Grid style={{ backgroundColor: "rgba(0,0,0,0.25" }}>
+            <NavLink op="prev" />
+          </Grid>
+          <Grid style={{ backgroundColor: "rgba(0,0,0,0.25" }}>
+            <NavLink op="next" />
+          </Grid>
+        </Grid>
+      )}
       <Container>
         <Paper style={{ margin: "12px 0 12px", padding: 12 }}>
           {passage.verses.map((verse, index) => {
@@ -231,7 +258,7 @@ function PassageReader({ title, passage, navData }) {
         </Paper>
       </Container>
       <AppBar
-        position="sticky"
+        position="relative"
         color="primary"
         style={{ top: "auto", bottom: 0, backgroundColor: "rgb(34, 104, 148)" }}
       >
