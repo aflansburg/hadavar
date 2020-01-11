@@ -175,8 +175,12 @@ function PassageReader({ title, passage, navData }) {
                     onChange={handleChapterChange}
                     style={{ color: "#fff" }}
                   >
-                    {chapterArrIterable.map(v => {
-                      return <MenuItem value={v + 1}>{v + 1}</MenuItem>;
+                    {chapterArrIterable.map((v, vi) => {
+                      return (
+                        <MenuItem value={v + 1} key={`menu-item-${vi}`}>
+                          {v + 1}
+                        </MenuItem>
+                      );
                     })}
                   </Select>
                 </FormControl>

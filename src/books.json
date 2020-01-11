@@ -17,9 +17,24 @@
       "length": 22
     },
     {
-      "name": "Melakhim Bet",
+      "name": "Melakhim Bet (2nd Kings)",
       "slug": "melakhim_bet",
       "length": 25
+    },
+    {
+      "name": "Yesha-Yahu (Isaiah)",
+      "slug": "yesha_yahu",
+      "length": 66
+    },
+    {
+      "name": "Yirme-Yahu (Jeremiah)",
+      "slug": "yirme_yahu",
+      "length": 52
+    },
+    {
+      "name": "Dani'el",
+      "slug": "daniel",
+      "length": 12
     }
   ],
   "AllBooks": [
@@ -41,6 +56,21 @@
       "name": "Melakhim Bet",
       "slug": "melakhim_bet",
       "length": 25
+    },
+    {
+      "name": "Yesha-Yahu",
+      "slug": "yesha_yahu",
+      "length": 66
+    },
+    {
+      "name": "Yirme-Yahu (Jeremiah)",
+      "slug": "yirme_yahu",
+      "length": 52
+    },
+    {
+      "name": "Dani'el",
+      "slug": "daniel",
+      "length": 12
     }
   ]
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button, Grid, Paper, Typography, Divider } from "@material-ui/core";
 import makeStyles from "@material-ui/styles/makeStyles";
+import booksMeta from "../books.json";
 
 const useStyles = makeStyles({
   card: {
@@ -12,13 +13,7 @@ const useStyles = makeStyles({
 export function Torah() {
   const classes = useStyles();
 
-  const TorahBooks = [
-    { name: "B'reshit (Genesis)", slug: "breshit" },
-    { name: "Shemot (Exodus)", slug: "shemot" },
-    { name: "Vayikra (Leviticus)", slug: "vayikra" },
-    { name: "BaMidbar (Numbers)", slug: "bamidbar" },
-    { name: "D'varim (Deuteronomy)", slug: "dvarim" }
-  ];
+  const TorahBooks = booksMeta["Torah"];
 
   return (
     <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
@@ -44,14 +39,7 @@ export function Torah() {
 export function Neviim() {
   const classes = useStyles();
 
-  const Neviim = [
-    { name: "Yehoshua (Joshua)", slug: "yehoshua" },
-    { name: "Shofitm (Judges)", slug: "shofitm" },
-    { name: "Shmu'el Alef (1 Samuel)", slug: "shmuel_alef" },
-    { name: "Shmu'el Bet (2 Samuel)", slug: "shmuel_bet" },
-    { name: "Melakhim Alef (1st Kings)", slug: "melakhim_alef" },
-    { name: "Melakhim Bet (2nd Kings)", slug: "melakhim_bet" }
-  ];
+  const Neviim = booksMeta["Nevi'im"];
 
   return (
     <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
