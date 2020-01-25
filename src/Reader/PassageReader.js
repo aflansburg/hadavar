@@ -48,16 +48,16 @@ function PassageReader({ title, passage, navData }) {
   let chapterArrIterable = Array.apply(null, Array(length));
   chapterArrIterable = chapterArrIterable.map((_, i) => i);
 
+  const scrollBtnTimer = setTimeout(() => {
+    setShowNavBtns(false);
+  }, 3500);
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setShowNavBtns(true);
-      setTimeout(() => {
-        setShowNavBtns(false);
-      }, 1500);
-    });
-    setTimeout(() => {
-      setShowNavBtns(false);
-    }, 1500);
+    window.addEventListener("scroll", scrollToggleNav);
+    return () => {
+      clearTimeout(scrollBtnTimer);
+      window.removeEventListener("scroll", scrollToggleNav);
+    };
   }, []);
 
   useEffect(() => {
@@ -78,6 +78,10 @@ function PassageReader({ title, passage, navData }) {
       }, 250);
     }
   }, []);
+
+  const scrollToggleNav = e => {
+    setShowNavBtns(true);
+  };
 
   const handleVerseChange = e => {
     setSelectedVerse(e.target.value);
