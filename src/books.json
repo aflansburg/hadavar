@@ -35,6 +35,11 @@
       "name": "Dani'el (Daniel)",
       "slug": "daniel",
       "length": 12
+    },
+    {
+      "name": "Yekhezkel (Ezekiel)",
+      "slug": "Yekhezkel",
+      "length": 48
     }
   ],
   "AllBooks": [
@@ -71,6 +76,11 @@
       "name": "Dani'el",
       "slug": "daniel",
       "length": 12
+    },
+    {
+      "name": "Yekhezkel",
+      "slug": "yekhezkel",
+      "length": 48
     }
   ]
 }

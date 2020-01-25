@@ -1,3 +1,4 @@
+import React from "react";
 import fetch from "isomorphic-unfetch";
 import PassageReader from "../../src/Reader/PassageReader";
 import { AllBooks } from "../../src/books.json";
