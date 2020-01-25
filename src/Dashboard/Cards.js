@@ -23,7 +23,7 @@ export function Torah() {
         {TorahBooks.map((book, index) => {
           return (
             <Grid item xs={12} key={`Torah-Book-${book.name}-${index}`}>
-              <Link href={`/torah/passage?book=${index}`}>
+              <Link href={`/passages/passage?book=${index}`}>
                 <Button>
                   <Typography variant="subtitle1">{book.name}</Typography>
                 </Button>
@@ -51,7 +51,7 @@ export function Neviim() {
           const bookIndex = index + 5;
           return (
             <Grid item xs={12} key={`Neviim-Book-${book.name}-${bookIndex}`}>
-              <Link href={`/torah/passage?book=${bookIndex}`}>
+              <Link href={`/passages/passage?book=${bookIndex}`}>
                 <Button>
                   <Typography variant="subtitle1">{book.name}</Typography>
                 </Button>
@@ -59,6 +59,39 @@ export function Neviim() {
             </Grid>
           );
         })}
+      </Grid>
+    </Grid>
+  );
+}
+
+export function HaKetuvim() {
+  const classes = useStyles();
+
+  const HaKetuvim = booksMeta["HaKetuvim"];
+
+  return (
+    <Grid item xs={12} sm={4} md={3} component={Paper} className={classes.card}>
+      <Typography variant="h5">HaKetuvim</Typography>
+      <Divider style={{ marginBottom: 8 }} />
+      <Grid item container spacing={2}>
+        <Grid item xs={12}>
+          <Button>
+            <Typography variant="subtitle1">....Coming Soon</Typography>
+          </Button>
+        </Grid>
+        {/* {HaKetuvim.map((book, index) => {
+          // adding 5 to index to get to Writings, probably not ideal - need to rethink
+          const bookIndex = index + 29;
+          return (
+            <Grid item xs={12} key={`HaKetuvim-Book-${book.name}-${bookIndex}`}>
+              <Link href={`/passages/passage?book=${bookIndex}`}>
+                <Button>
+                  <Typography variant="subtitle1">{book.name}</Typography>
+                </Button>
+              </Link>
+            </Grid>
+          );
+        })} */}
       </Grid>
     </Grid>
   );

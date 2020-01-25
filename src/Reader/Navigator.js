@@ -39,5 +39,5 @@ export default function(
       res["chapter"] = 0;
       break;
   }
-  return `/torah/passage?book=${res.book}&chapterIndex=${res.chapter}`;
+  return `/passages/passage?book=${res.book}&chapterIndex=${res.chapter}`;
 }

@@ -38,10 +38,16 @@
     },
     {
       "name": "Yekhezkel (Ezekiel)",
-      "slug": "Yekhezkel",
+      "slug": "yekhezkel",
       "length": 48
+    },
+    {
+      "name": "Ezrah (Ezrah)",
+      "slug": "ezrah",
+      "length": 10
     }
   ],
+  "HaKetuvim": [],
   "AllBooks": [
     { "name": "B'reshit", "slug": "breshit", "length": 50 },
     { "name": "Shemot", "slug": "shemot", "length": 40 },
@@ -81,6 +87,11 @@
       "name": "Yekhezkel",
       "slug": "yekhezkel",
       "length": 48
+    },
+    {
+      "name": "Ezrah",
+      "slug": "ezrah",
+      "length": 10
     }
   ]
 }

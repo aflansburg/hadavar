@@ -85,15 +85,16 @@ function PassageReader({ title, passage, navData }) {
 
   const handleVerseChange = e => {
     setSelectedVerse(e.target.value);
-    const url = `/torah/passage?book=${
+    const url = `/passages/passage?book=${
       navData.currBookIndex
     }&chapterIndex=${selectedChapter - 1}&verseIndex=${e.target.value - 1}`;
     Router.push(url, url, { shallow: true });
   };
   const handleChapterChange = e => {
     setSelectedChapter(e.target.value);
-    const url = `/torah/passage?book=${navData.currBookIndex}&chapterIndex=${e
-      .target.value - 1}&verseIndex=${selectedVerse - 1}`;
+    const url = `/passages/passage?book=${
+      navData.currBookIndex
+    }&chapterIndex=${e.target.value - 1}&verseIndex=${selectedVerse - 1}`;
     Router.push(url, url, { shallow: true });
   };
 

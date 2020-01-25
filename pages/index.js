@@ -9,12 +9,13 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import makeStyles from "@material-ui/styles/makeStyles";
-import { Torah, Neviim, Glossary } from "../src/Dashboard/Cards";
+import { Torah, Neviim, HaKetuvim, Glossary } from "../src/Dashboard/Cards";
 import TorahScroll from "../src/svg/scroll";
 
 const useStyles = makeStyles({
   root: {
-    margin: 12
+    margin: 12,
+    textAlign: "center"
   },
   title: {
     marginLeft: 8
@@ -43,6 +44,7 @@ export default function Index() {
         <Grid container spacing={2} justify="space-evenly">
           <Torah />
           <Neviim />
+          <HaKetuvim />
           <Glossary />
         </Grid>
       </div>
