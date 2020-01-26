@@ -44,21 +44,40 @@ function PassageReader({ title, passage, navData }) {
   const [showNavBtns, setShowNavBtns] = useState(true);
   const inputLabel = React.useRef(null);
 
+  const [windowHeight, setWindowHeight] = useState();
+
   const { length } = navData;
   let chapterArrIterable = Array.apply(null, Array(length));
   chapterArrIterable = chapterArrIterable.map((_, i) => i);
-
-  const scrollBtnTimer = setTimeout(() => {
-    setShowNavBtns(false);
-  }, 3500);
+  let timer;
 
   useEffect(() => {
-    window.addEventListener("scroll", scrollToggleNav);
+    setWindowHeight(window.innerHeight);
+    window.addEventListener("scroll", scrollToggleNav, false);
+    window.addEventListener("touchmove", scrollToggleNav, false);
+    timer = setTimeout(() => {
+      setShowNavBtns(false);
+      clearTimeout(timer);
+    }, 3000);
     return () => {
-      clearTimeout(scrollBtnTimer);
-      window.removeEventListener("scroll", scrollToggleNav);
+      clearTimeout(timer);
+      window.removeEventListener("scroll", scrollToggleNav, false);
+      window.removeEventListener("touchmove", scrollToggleNav, false);
     };
   }, []);
+
+  useEffect(() => {
+    if (showNavBtns && !timer) {
+      timer = setTimeout(() => {
+        setShowNavBtns(false);
+        clearTimeout(timer);
+      }, 3000);
+    }
+  }, [showNavBtns]);
+
+  const scrollToggleNav = e => {
+    setShowNavBtns(true);
+  };
 
   useEffect(() => {
     const verseNumber =
@@ -78,10 +97,6 @@ function PassageReader({ title, passage, navData }) {
       }, 250);
     }
   }, []);
-
-  const scrollToggleNav = e => {
-    setShowNavBtns(true);
-  };
 
   const handleVerseChange = e => {
     setSelectedVerse(e.target.value);
@@ -122,7 +137,7 @@ function PassageReader({ title, passage, navData }) {
         <span
           style={{
             fontWeight: "bold",
-            fontSize: 20
+            fontSize: 22
           }}
           key={i}
         >
@@ -131,7 +146,7 @@ function PassageReader({ title, passage, navData }) {
       );
     }
     return (
-      <Typography variant="body1" id={id}>
+      <Typography variant="body1" id={id} style={{ fontSize: 20 }}>
         <span style={{ fontWeight: "bold", marginRight: 3 }}>
           <sup>{verseNum}</sup>
         </span>
@@ -152,7 +167,7 @@ function PassageReader({ title, passage, navData }) {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <AppBar
         position="sticky"
         style={{ marginBottom: 18, backgroundColor: "rgb(34, 104, 148)" }}
@@ -248,8 +263,10 @@ function PassageReader({ title, passage, navData }) {
           </Grid>
         </Grid>
       )}
-      <Container>
-        <Paper style={{ margin: "12px 0 12px", padding: 12 }}>
+      <Container style={{ height: windowHeight }}>
+        <Paper
+          style={{ margin: "12px 0 12px", padding: 12, marginBottom: "4rem" }}
+        >
           {passage.verses.map((verse, index) => {
             return (
               <BoldedVerse
@@ -262,23 +279,29 @@ function PassageReader({ title, passage, navData }) {
           })}
         </Paper>
       </Container>
-      <AppBar
-        position="relative"
-        color="primary"
-        style={{ top: "auto", bottom: 0, backgroundColor: "rgb(34, 104, 148)" }}
-      >
-        {/* if current chapter index plus 1 less than book length (num of
+      {windowHeight && (
+        <AppBar
+          position="fixed"
+          color="primary"
+          style={{
+            top: "auto",
+            bottom: 0,
+            backgroundColor: "rgb(34, 104, 148)"
+          }}
+        >
+          {/* if current chapter index plus 1 less than book length (num of
           chapters) then current book else go to next book via currBookIndex++ */}
-        <Grid container justify="space-between">
-          <Grid item>
-            <NavLink op="prev" />
+          <Grid container justify="space-between">
+            <Grid item>
+              <NavLink op="prev" />
+            </Grid>
+            <Grid item>
+              <NavLink op="next" />
+            </Grid>
           </Grid>
-          <Grid item>
-            <NavLink op="next" />
-          </Grid>
-        </Grid>
-      </AppBar>
-    </React.Fragment>
+        </AppBar>
+      )}
+    </div>
   );
 }
 
