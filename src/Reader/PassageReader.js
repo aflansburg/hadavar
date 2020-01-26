@@ -54,7 +54,13 @@ function PassageReader({ title, passage, navData }) {
   useEffect(() => {
     setWindowHeight(window.innerHeight);
     window.addEventListener("scroll", scrollToggleNav, false);
-    window.addEventListener("touchmove", scrollToggleNav, false);
+    window.addEventListener(
+      "touchmove",
+      e => {
+        e.preventDefault();
+      },
+      false
+    );
     timer = setTimeout(() => {
       setShowNavBtns(false);
       clearTimeout(timer);
@@ -62,7 +68,13 @@ function PassageReader({ title, passage, navData }) {
     return () => {
       clearTimeout(timer);
       window.removeEventListener("scroll", scrollToggleNav, false);
-      window.removeEventListener("touchmove", scrollToggleNav, false);
+      window.removeEventListener(
+        "touchmove",
+        e => {
+          e.preventDefault();
+        },
+        false
+      );
     };
   }, []);
 
@@ -146,7 +158,7 @@ function PassageReader({ title, passage, navData }) {
       );
     }
     return (
-      <Typography variant="body1" id={id} style={{ fontSize: 20 }}>
+      <Typography variant="body1" id={id} style={{ fontSize: 18 }}>
         <span style={{ fontWeight: "bold", marginRight: 3 }}>
           <sup>{verseNum}</sup>
         </span>
@@ -263,9 +275,9 @@ function PassageReader({ title, passage, navData }) {
           </Grid>
         </Grid>
       )}
-      <Container style={{ height: windowHeight }}>
+      <Container fixed style={{ height: windowHeight }}>
         <Paper
-          style={{ margin: "12px 0 12px", padding: 12, marginBottom: "4rem" }}
+          style={{ margin: "12px 0 12px", padding: "1rem 12px 4rem 12px" }}
         >
           {passage.verses.map((verse, index) => {
             return (
