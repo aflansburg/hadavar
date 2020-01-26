@@ -45,9 +45,80 @@
       "name": "Ezrah (Ezrah)",
       "slug": "ezrah",
       "length": 10
+    },
+    {
+      "name": "Nekhem-Yah (Nehemiah)",
+      "slug": "nekhem-yah",
+      "length": 13
+    },
+    {
+      "name": "Hoshe'ah (Hosea)",
+      "slug": "hoshe_ah",
+      "length": 14
+    },
+    {
+      "name": "Yo'el (Joel)",
+      "slug": "yo_el",
+      "length": 4
+    },
+    {
+      "name": "Amos",
+      "slug": "Amos",
+      "length": 9
+    },
+    {
+      "name": "Ovad-Yah (Obadiah)",
+      "slug": "ovad-yah",
+      "length": 1
+    },
+    {
+      "name": "Yonah (Jonah)",
+      "slug": "yonah",
+      "length": 4
+    },
+    {
+      "name": "Mikhah (Micah)",
+      "slug": "mikhah",
+      "length": 7
+    },
+    {
+      "name": "Nakhum (Nahum)",
+      "slug": "nakhum",
+      "length": 3
+    },
+    {
+      "name": "Khabakuk (Habbakuk)",
+      "slug": "khabakuk",
+      "length": 3
+    },
+    {
+      "name": "Tzefan-Yah (Zephaniah)",
+      "slug": "tzefan-yah",
+      "length": 3
+    },
+    {
+      "name": "Khagai (Haggai)",
+      "slug": "khagai",
+      "length": 3
+    },
+    {
+      "name": "Zekhar-Yah (Zechariah)",
+      "slug": "zekhar-Yah",
+      "length": 14
+    },
+    {
+      "name": "Malakhi (Malachi)",
+      "slug": "malakhi",
+      "length": 3
     }
   ],
-  "HaKetuvim": [],
+  "HaKetuvim": [
+    {
+      "name": "תהלים Tehillim (Psalms)",
+      "slug": "tehillim",
+      "length": 150
+    }
+  ],
   "AllBooks": [
     { "name": "B'reshit", "slug": "breshit", "length": 50 },
     { "name": "Shemot", "slug": "shemot", "length": 40 },
@@ -92,6 +163,76 @@
       "name": "Ezrah",
       "slug": "ezrah",
       "length": 10
+    },
+    {
+      "name": "Nekhem-Yah",
+      "slug": "nekhem-yah",
+      "length": 13
+    },
+    {
+      "name": "Hoshe'ah",
+      "slug": "hoshe_ah",
+      "length": 14
+    },
+    {
+      "name": "Yo'el",
+      "slug": "yo_el",
+      "length": 4
+    },
+    {
+      "name": "Amos",
+      "slug": "Amos",
+      "length": 9
+    },
+    {
+      "name": "Ovad-Yah",
+      "slug": "ovad-yah",
+      "length": 1
+    },
+    {
+      "name": "Yonah",
+      "slug": "yonah",
+      "length": 4
+    },
+    {
+      "name": "Mikhah",
+      "slug": "mikhah",
+      "length": 7
+    },
+    {
+      "name": "Nakhum",
+      "slug": "Nakhum",
+      "length": 3
+    },
+    {
+      "name": "Khabakuk",
+      "slug": "khabakuk",
+      "length": 3
+    },
+    {
+      "name": "Tzefan-Yah",
+      "slug": "tzefan-yah",
+      "length": 3
+    },
+    {
+      "name": "Khagai",
+      "slug": "khagai",
+      "length": 3
+    },
+    {
+      "name": "Zekhar-Yah",
+      "slug": "zekhar-Yah",
+      "length": 14
+    },
+    {
+      "name": "Malakhi",
+      "slug": "malakhi",
+      "length": 3
+    },
+    {
+      "name": "תהלים Tehillim",
+      "slug": "tehillim",
+      "length": 150
     }
   ]
 }

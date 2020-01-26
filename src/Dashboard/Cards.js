@@ -74,12 +74,7 @@ export function HaKetuvim() {
       <Typography variant="h5">HaKetuvim</Typography>
       <Divider style={{ marginBottom: 8 }} />
       <Grid item container spacing={2}>
-        <Grid item xs={12}>
-          <Button>
-            <Typography variant="subtitle1">....Coming Soon</Typography>
-          </Button>
-        </Grid>
-        {/* {HaKetuvim.map((book, index) => {
+        {HaKetuvim.map((book, index) => {
           // adding 5 to index to get to Writings, probably not ideal - need to rethink
           const bookIndex = index + 29;
           return (
@@ -91,7 +86,7 @@ export function HaKetuvim() {
               </Link>
             </Grid>
           );
-        })} */}
+        })}
       </Grid>
     </Grid>
   );
