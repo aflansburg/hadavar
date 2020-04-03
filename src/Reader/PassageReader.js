@@ -16,6 +16,7 @@ import {
   BottomNavigation,
   BottomNavigationAction
 } from "@material-ui/core";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import makeStyles from "@material-ui/styles/makeStyles";
 import SvgIcon from "@material-ui/core/SvgIcon";
@@ -314,9 +315,33 @@ function PassageReader({ title, passage, navData }) {
         >
           {/* if current chapter index plus 1 less than book length (num of
           chapters) then current book else go to next book via currBookIndex++ */}
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <NavLink op="prev" />
+            </Grid>
+            <Grid
+              item
+              container
+              xs={8}
+              sm={3}
+              justify="center"
+              data-href={window.location.href}
+              data-layout="button"
+              data-size="large"
+            >
+              <IconButton
+                target="_blank"
+                aria-label="share verse to facebook"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&src=sdkpreparse`}
+                className="fb-xfbml-parse-ignore"
+                style={{ fontSize: 16, color: "#fff" }}
+              >
+                <FacebookIcon
+                  style={{ color: "#fff", marginRight: 4 }}
+                  fontSize="small"
+                />
+                Share Verse To Facebook
+              </IconButton>
             </Grid>
             <Grid item>
               <NavLink op="next" />
