@@ -115,7 +115,7 @@ function PassageReader({ title, passage, navData }) {
     const url = `/passages/passage?book=${
       navData.currBookIndex
     }&chapterIndex=${selectedChapter - 1}&verseIndex=${e.target.value - 1}`;
-    Router.push(url, url, { shallow: true });
+    Router.replace(url, url, { shallow: true });
   };
   const handleChapterChange = e => {
     setSelectedChapter(e.target.value);
@@ -123,6 +123,16 @@ function PassageReader({ title, passage, navData }) {
       navData.currBookIndex
     }&chapterIndex=${e.target.value - 1}&verseIndex=${selectedVerse - 1}`;
     Router.push(url, url, { shallow: true });
+  };
+
+  const handleClickVerse = (verse, verseNum, id) => {
+    if (verseNum !== verseHighlighted) {
+      setVerseHighlighted(verseNum);
+      const url = `/passages/passage?book=${
+        navData.currBookIndex
+      }&chapterIndex=${selectedChapter - 1}&verseIndex=${verseNum - 1}`;
+      Router.replace(url, url, { shallow: true });
+    } else setVerseHighlighted(null);
   };
 
   const NavLink = ({ op }) => (
@@ -163,10 +173,7 @@ function PassageReader({ title, passage, navData }) {
           <sup>{verseNum}</sup>
         </span>
         <span
-          onClick={() => {
-            if (verseNum !== verseHighlighted) setVerseHighlighted(verseNum);
-            else setVerseHighlighted(null);
-          }}
+          onClick={() => handleClickVerse(verse, verseNum, id)}
           style={{
             backgroundColor:
               verseNum === verseHighlighted ? "rgba(154,255,154,0.58)" : "none"
