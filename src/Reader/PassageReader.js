@@ -17,6 +17,8 @@ import {
   BottomNavigationAction
 } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
+import ArrowRight from "@material-ui/icons/ArrowRight";
+import ArrowLeft from "@material-ui/icons/ArrowLeft";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import makeStyles from "@material-ui/styles/makeStyles";
 import SvgIcon from "@material-ui/core/SvgIcon";
@@ -141,14 +143,15 @@ function PassageReader({ title, passage, navData }) {
 
   const NavLink = ({ op }) => (
     <Link href={Navigator(navData, op)}>
-      <IconButton style={{ color: "#fff" }}>
-        <SvgIcon>
-          {op === "next" ? (
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-          ) : (
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-          )}
-        </SvgIcon>
+      <IconButton
+        size="small"
+        style={{
+          color: "#fff",
+          height: "4rem",
+          marginLeft: op === "prev" && -6
+        }}
+      >
+        {op === "next" ? <ArrowRight /> : <ArrowLeft />}
       </IconButton>
     </Link>
   );
@@ -272,20 +275,38 @@ function PassageReader({ title, passage, navData }) {
           </Grid>
         </Toolbar>
       </AppBar>
-      {showNavBtns && (
+      {/* {!showNavBtns && ( */}
+      <Grid
+        container
+        justify="space-between"
+        style={{ position: "fixed", bottom: "50%" }}
+      >
         <Grid
-          container
-          justify="space-between"
-          style={{ position: "fixed", bottom: "50%" }}
+          item
+          style={{
+            width: 26,
+            backgroundColor: "rgba(0,0,0,0.25)",
+            borderTopRightRadius: 75,
+            borderBottomRightRadius: 75,
+            border: "2px solid rgba(0,0,0,0)"
+          }}
         >
-          <Grid style={{ backgroundColor: "rgba(0,0,0,0.25" }}>
-            <NavLink op="prev" />
-          </Grid>
-          <Grid style={{ backgroundColor: "rgba(0,0,0,0.25" }}>
-            <NavLink op="next" />
-          </Grid>
+          <NavLink op="prev" />
         </Grid>
-      )}
+        <Grid
+          item
+          style={{
+            width: 26,
+            backgroundColor: "rgba(0,0,0,0.25)",
+            borderTopLeftRadius: 75,
+            borderBottomLeftRadius: 75,
+            border: "2px solid rgba(0,0,0,0)"
+          }}
+        >
+          <NavLink op="next" />
+        </Grid>
+      </Grid>
+      {/* )} */}
       <Container fixed style={{ height: windowHeight }}>
         <Paper
           style={{ margin: "12px 0 12px", padding: "1rem 12px 4rem 12px" }}
