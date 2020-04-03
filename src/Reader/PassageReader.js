@@ -111,11 +111,13 @@ function PassageReader({ title, passage, navData }) {
   }, []);
 
   const handleVerseChange = e => {
+    e.preventDefault();
     setSelectedVerse(e.target.value);
     const url = `/passages/passage?book=${
       navData.currBookIndex
     }&chapterIndex=${selectedChapter - 1}&verseIndex=${e.target.value - 1}`;
-    Router.replace(url, url, { shallow: true });
+    window.history.replaceState(url, "Page Title", url);
+    // Router.replace(url, url, { shallow: true });
   };
   const handleChapterChange = e => {
     setSelectedChapter(e.target.value);
@@ -128,10 +130,12 @@ function PassageReader({ title, passage, navData }) {
   const handleClickVerse = (verse, verseNum, id) => {
     if (verseNum !== verseHighlighted) {
       setVerseHighlighted(verseNum);
+      setSelectedVerse(verseNum);
       const url = `/passages/passage?book=${
         navData.currBookIndex
       }&chapterIndex=${selectedChapter - 1}&verseIndex=${verseNum - 1}`;
-      Router.replace(url, url, { shallow: true });
+      // Router.replace(url, url, { shallow: true });
+      window.history.replaceState(url, "Page Title", url);
     } else setVerseHighlighted(null);
   };
 
