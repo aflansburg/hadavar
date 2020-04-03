@@ -275,38 +275,38 @@ function PassageReader({ title, passage, navData }) {
           </Grid>
         </Toolbar>
       </AppBar>
-      {/* {!showNavBtns && ( */}
-      <Grid
-        container
-        justify="space-between"
-        style={{ position: "fixed", bottom: "50%" }}
-      >
+      {showNavBtns && (
         <Grid
-          item
-          style={{
-            width: 26,
-            backgroundColor: "rgba(0,0,0,0.25)",
-            borderTopRightRadius: 75,
-            borderBottomRightRadius: 75,
-            border: "2px solid rgba(0,0,0,0)"
-          }}
+          container
+          justify="space-between"
+          style={{ position: "fixed", bottom: "50%" }}
         >
-          <NavLink op="prev" />
+          <Grid
+            item
+            style={{
+              width: 26,
+              backgroundColor: "rgba(0,0,0,0.25)",
+              borderTopRightRadius: 75,
+              borderBottomRightRadius: 75,
+              border: "2px solid rgba(0,0,0,0)"
+            }}
+          >
+            <NavLink op="prev" />
+          </Grid>
+          <Grid
+            item
+            style={{
+              width: 26,
+              backgroundColor: "rgba(0,0,0,0.25)",
+              borderTopLeftRadius: 75,
+              borderBottomLeftRadius: 75,
+              border: "2px solid rgba(0,0,0,0)"
+            }}
+          >
+            <NavLink op="next" />
+          </Grid>
         </Grid>
-        <Grid
-          item
-          style={{
-            width: 26,
-            backgroundColor: "rgba(0,0,0,0.25)",
-            borderTopLeftRadius: 75,
-            borderBottomLeftRadius: 75,
-            border: "2px solid rgba(0,0,0,0)"
-          }}
-        >
-          <NavLink op="next" />
-        </Grid>
-      </Grid>
-      {/* )} */}
+      )}
       <Container fixed style={{ height: windowHeight }}>
         <Paper
           style={{ margin: "12px 0 12px", padding: "1rem 12px 4rem 12px" }}
