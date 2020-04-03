@@ -20,7 +20,13 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
-        <body>
+        <body
+          style={{
+            overflowX: "hidden",
+            overflowScrolling: "touch",
+            WebkitOverflowScrolling: "touch"
+          }}
+        >
           <div id="fb-root"></div>
           <script
             async
