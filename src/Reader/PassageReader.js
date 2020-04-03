@@ -130,6 +130,10 @@ function PassageReader({ title, passage, navData }) {
   };
 
   const handleClickVerse = (verse, verseNum, id) => {
+    const ogDescription = document.querySelector('meta[name="og-description"]');
+    if (ogDescription) ogDescription.content = verse;
+    const ogTitle = document.querySelector('meta[name="og-title"]');
+    if (ogTitle) ogTitle.content = verse;
     if (verseNum !== verseHighlighted) {
       setVerseHighlighted(verseNum);
       setSelectedVerse(verseNum);
